@@ -38,4 +38,16 @@ public class PathUtilsTest {
  		PathUtils paths = new PathUtils();
  		assertFalse(paths.isDirectPath("Singapore","Chennai"));
 	}
+
+	@Test
+	public void getpath_returns_true_if_flight_between_bangalore_to_tokyo(){
+ 		PathUtils paths = new PathUtils();
+ 		assertEquals(paths.getPath("Bangalore","Tokyo"),1);
+	}
+
+	@Test
+	public void getpath_returns_false_if_no_flight_between_bangalore_to_chennai(){
+ 		PathUtils paths = new PathUtils();
+ 		assertEquals(paths.getPath("Bangalore" , "Chennai"),0);
+	}
 }
