@@ -36,13 +36,21 @@ class Destination{
 }
 
 class Database{
-	public static Map<Source,Destination> map = new HashMap<Source,Destination>();
-	public static Map<Source,Destination> CreateDatabase(){
-		map.put(new Source("Bangalore"),new Destination("Singapore"));
-		map.put(new Source("Singapore"),new Destination("Seoul"));
-		map.put(new Source("Singapore"),new Destination("Dubai"));
-		map.put(new Source("Seoul"),new Destination("Beijing"));
-		map.put(new Source("Beijing"),new Destination("Tokyo"));
+	public static Map<String,List<String>> map = new HashMap<String,List<String>>();
+	public static Map<String,List<String>> CreateDatabase(){
+		List<String> bangalore = new ArrayList<String>();
+		List<String> singapore = new ArrayList<String>();
+		List<String> seoul = new ArrayList<String>();
+		List<String> beijing = new ArrayList<String>();
+		bangalore.add("Singapore");
+		singapore.add("Seoul");
+		singapore.add("Dubai");
+		seoul.add("Beijing");
+		beijing.add("Tokyo");
+		map.put("Bangalore", bangalore);
+		map.put("Singapore", singapore);
+		map.put("Seoul", seoul);
+		map.put("Beijing", beijing);
 		return map;
 	}
 }
