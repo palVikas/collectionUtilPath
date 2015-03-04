@@ -42,12 +42,15 @@ public class PathUtilsTest {
 	@Test
 	public void getpath_returns_true_if_flight_between_bangalore_to_tokyo(){
  		PathUtils paths = new PathUtils();
- 		assertEquals(paths.getPath("Bangalore","Tokyo"),1);
+ 		assertTrue(paths.getPath("Bangalore","Tokyo"));
+ 		assertTrue(paths.getPath("Bangalore","Beijing"));
 	}
 
 	@Test
 	public void getpath_returns_false_if_no_flight_between_bangalore_to_chennai(){
  		PathUtils paths = new PathUtils();
- 		assertEquals(paths.getPath("Bangalore" , "Chennai"),0);
+ 		assertFalse(paths.getPath("Bangalore" , "Chennai"));
 	}
+
+	
 }
