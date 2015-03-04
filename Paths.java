@@ -14,7 +14,6 @@ class Paths {
 			return;
 		}
 		else
-			System.out.println(paths.isDirectPath(source,destination));
-
+			System.out.println(paths.getFullPath(source,destination));
 	}
 }

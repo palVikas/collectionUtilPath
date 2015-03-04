@@ -4,6 +4,8 @@ public class PathUtils {
 
 	public static Map<String,List<String>> map = Database.CreateDatabase();
 
+	Queue<String> path = new LinkedList<String>();
+
 	public static boolean isCityPresent(String city) {
 		Set<String> keys = map.keySet();
 		if(keys.contains(city))
@@ -18,15 +20,17 @@ public class PathUtils {
 		}
 	}
 
-	public static boolean isDirectPath(String from,String to) {
+	public boolean isDirectPath(String from,String to) {
+			path.add(from);
 		return (getPath(from,to));
 	}
 
-	public static boolean getPath(String source,String destination){
+	public boolean getPath(String source,String destination){
 		Set<String> cities = map.keySet();
 		if(isCityPresent(source) && isCityPresent(destination)){
 
 			if(map.get(source).contains(destination)){
+				path.add(destination);
 				return true;
 			}
 
@@ -35,13 +39,29 @@ public class PathUtils {
 					if(city.equals(source)) {
 						List<String> lists = map.get(city);
 						for(String list:lists){
-							return getPath(list,destination);
+							if(!path.contains(list)){
+								path.add(list);
+								return getPath(list,destination);
+							}
 						}
 					}
 				}
 			}
 		}
 		return false;
+	}
+
+	public String getFullPath(String from,String to) {
+		String fullpath = ""; 
+		isDirectPath(from,to);
+		int length = path.size();
+		for(int i=0;i<length;i++){
+			if(i==0)
+				fullpath +=""+path.poll();
+			else
+				fullpath +="-->"+path.poll();
+		}
+		return fullpath;
 	}
 
 }

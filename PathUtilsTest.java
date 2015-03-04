@@ -34,22 +34,33 @@ public class PathUtilsTest {
 	}
 
 	@Test
-	public void isDirectpath_returns_false_if_no_direct_flight_between_Singapore_to_Chennai(){
+	public void Directpath_returns_false_if_no_direct_flight_between_Singapore_to_Chennai(){
  		PathUtils paths = new PathUtils();
  		assertFalse(paths.isDirectPath("Singapore","Chennai"));
 	}
 
 	@Test
-	public void getpath_returns_true_if_flight_between_bangalore_to_tokyo(){
+	public void Directpath_returns_true_if_flight_between_bangalore_to_tokyo(){
  		PathUtils paths = new PathUtils();
- 		assertTrue(paths.getPath("Bangalore","Tokyo"));
- 		assertTrue(paths.getPath("Bangalore","Beijing"));
+ 		assertTrue(paths.isDirectPath("Bangalore","Tokyo"));
 	}
 
 	@Test
-	public void getpath_returns_false_if_no_flight_between_bangalore_to_chennai(){
+	public void Directpath_returns_false_if_no_flight_between_bangalore_to_chennai(){
  		PathUtils paths = new PathUtils();
- 		assertFalse(paths.getPath("Bangalore" , "Chennai"));
+ 		assertFalse(paths.isDirectPath("Bangalore" , "Chennai"));
+	}
+
+	@Test
+	public void getFullPath_returns_the_path_between_bangalore_to_Seoul(){
+ 		PathUtils paths = new PathUtils();
+ 		assertEquals(paths.getFullPath("Bangalore" , "Seoul"),"Bangalore-->Singapore-->Seoul");
+	}
+
+	@Test
+	public void getFullPath_gives_the_full_path_between_bangalore_to_Tokyo(){
+ 		PathUtils paths = new PathUtils();
+ 		assertEquals(paths.getFullPath("Bangalore" , "Tokyo"),"Bangalore-->Singapore-->Seoul-->Beijing-->Tokyo");
 	}
 
 	
