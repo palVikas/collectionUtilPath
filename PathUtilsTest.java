@@ -6,25 +6,25 @@ public class PathUtilsTest {
 	@Test
 	public void pathUtils_returns_true_if__Seoul_is_present_in_database(){
  		PathUtils paths = new PathUtils();
- 		assertTrue(paths.isCityPresent("Seoul"));
+ 		assertTrue(paths.isPresent("Seoul"));
 	}
 
 	@Test
 	public void pathUtils_returns_true_if__dubai_is_present_in_database(){
  		PathUtils paths = new PathUtils();
- 		assertTrue(paths.isCityPresent("Dubai"));
+ 		assertTrue(paths.isPresent("Dubai"));
 	}
 
 	@Test
 	public void pathUtils_returns_false_if__India_is_not_in_database(){
  		PathUtils paths = new PathUtils();
- 		assertFalse(paths.isCityPresent("India"));
+ 		assertFalse(paths.isPresent("India"));
 	}
 
 	@Test
-	public void isDirectpath_returns_true_if_direct_flight_between_seoul_to_bejing(){
+	public void isDirectpath_returns_true_if_direct_flight_between_Bejing_to_Tokyo(){
  		PathUtils paths = new PathUtils();
- 		assertTrue(paths.isDirectPath("Seoul", "Beijing"));
+ 		assertTrue(paths.isDirectPath("Beijing", "Tokyo"));
 	}
 
 	@Test

@@ -5,11 +5,11 @@ class Paths {
 		String source = args[0];
 		String destination = args[1];
  		PathUtils paths = new PathUtils();
-		if(!paths.isCityPresent(source)){
+		if(!paths.isPresent(source)){
 			System.out.println("No city named "+source+ " in database");
 			return;
 		}
-		if(!paths.isCityPresent(destination)){
+		if(!paths.isPresent(destination)){
 			System.out.println("No city named "+destination+ " in database");
 			return;
 		}
