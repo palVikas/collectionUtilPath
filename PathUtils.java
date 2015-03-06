@@ -2,7 +2,11 @@ import java.util.*;
 
 public class PathUtils {
 
-	public static Map<String,List<String>> map = Database.CreateDatabase();
+	private Map<String,List<String>> map = new HashMap<String,List<String>>();
+
+	public PathUtils(String content){
+		this.map = Database.pathStoreInDb(content);
+	}
 
 	Queue<String> path = new LinkedList<String>();
 

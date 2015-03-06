@@ -36,21 +36,23 @@ class Destination{
 }
 
 class Database{
-	public static Map<String,List<String>> map = new HashMap<String,List<String>>();
-	public static Map<String,List<String>> CreateDatabase(){
-		List<String> bangalore = new ArrayList<String>();
-		List<String> singapore = new ArrayList<String>();
-		List<String> seoul = new ArrayList<String>();
-		List<String> beijing = new ArrayList<String>();
-		bangalore.add("Singapore");
-		singapore.add("Seoul");
-		singapore.add("Dubai");
-		seoul.add("Beijing");
-		beijing.add("Tokyo");
-		map.put("Bangalore", bangalore);
-		map.put("Singapore", singapore);
-		map.put("Seoul", seoul);
-		map.put("Beijing", beijing);
+	public static Map<String,List<String>> pathStoreInDb(String line){
+		Map<String,List<String>> map = new HashMap<String,List<String>>();
+		String[] lines = line.split("\r\n");
+		for(String singleLine:lines){
+			String path[] = singleLine.split(",");
+			List<String> destinations = map.get(path[0]);
+			if(destinations == null){
+				destinations = new ArrayList<String>();
+				destinations.add(path[1]);				
+				map.put(path[0],destinations);
+			}
+			else{
+				destinations.add(path[1]);
+			}
+		}
 		return map;
 	}
+
 }
+
