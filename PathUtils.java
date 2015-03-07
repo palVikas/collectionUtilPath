@@ -10,7 +10,7 @@ public class PathUtils {
 
 	Queue<String> path = new LinkedList<String>();
 
-	public boolean isPresent(String city) {
+	public boolean isCityPresent(String city) {
 		Set<String> keys = map.keySet();
 		if(keys.contains(city))
 			return true;
@@ -31,7 +31,7 @@ public class PathUtils {
 
 	public boolean getPath(String source,String destination){
 		Set<String> cities = map.keySet();
-		if(isPresent(source) && isPresent(destination)){
+		if(isCityPresent(source) && isCityPresent(destination)){
 
 			if(map.get(source).contains(destination)){
 				path.add(destination);
